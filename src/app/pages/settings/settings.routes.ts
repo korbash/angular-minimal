@@ -3,4 +3,5 @@ import { SettingsComponent } from './settings.component';
 
 export const SETTINGS_ROUTES: Routes = [
   { path: '', component: SettingsComponent },
+  { path: '**', redirectTo: '' },
 ];

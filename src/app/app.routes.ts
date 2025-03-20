@@ -1,7 +1,11 @@
 import { Routes } from '@angular/router';
+import { WELCOME_ROUTES } from './pages/welcome/welcome.routes';
+import { SETTINGS_ROUTES } from './pages/settings/settings.routes';
+import { QUERY_ROUTES } from './pages/query/query.routes';
 
 export const routes: Routes = [
-  { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.routes').then(m => m.WELCOME_ROUTES) },
-  { path: 'settings', loadChildren: () => import('./pages/settings/settings.routes').then(m => m.SETTINGS_ROUTES) },
-  { path: '**', pathMatch: 'full', redirectTo: '/welcome' },
+  { path: 'welcome', loadChildren: () => WELCOME_ROUTES },
+  { path: 'settings', loadChildren: () => SETTINGS_ROUTES },
+  { path: 'query', loadChildren: () => QUERY_ROUTES },
+  { path: '**', redirectTo: 'welcome' },
 ];
