@@ -1,5 +1,6 @@
 import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { delay, tap } from 'rxjs/operators';
 
 import { routes } from './app.routes';
 import { icons } from './icons-provider';
@@ -9,10 +10,33 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideHttpClient } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptors,
+  HttpHandlerFn,
+  HttpRequest,
+  HttpInterceptorFn
+} from '@angular/common/http';
+import { BASE_PATH } from './api';
 
 registerLocaleData(en);
 
+// Правильный интерцептор с типами                                                           
+const delayInterceptor: HttpInterceptorFn = (
+  req: HttpRequest<unknown>,
+  next: HttpHandlerFn
+) => {
+  return next(req).pipe(
+    delay(1000) // Задержка для всех запросов                                                
+  );
+};  
+
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideNzIcons(icons), provideNzI18n(en_US), importProvidersFrom(FormsModule), provideAnimationsAsync(), provideHttpClient(), provideNzIcons(icons)]
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideNzIcons(icons), provideNzI18n(en_US), importProvidersFrom(FormsModule), provideAnimationsAsync(),
+  provideHttpClient(
+    withInterceptors([delayInterceptor])
+  ),
+  provideNzIcons(icons),
+  { provide: BASE_PATH, useValue: 'http://localhost:8000' },
+  ]
 };

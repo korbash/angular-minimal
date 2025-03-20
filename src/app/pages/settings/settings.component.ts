@@ -6,7 +6,7 @@ import { DefaultService, SettingsOutput } from '../../api';
   styleUrl: './settings.component.css'
 })
 export class SettingsComponent implements OnInit {
-  setings_str = "";
+  setings_str = "placeholder";
   constructor(private apiService: DefaultService) { }
 
   ngOnInit() {
