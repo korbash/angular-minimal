@@ -1,2 +1,24 @@
 <h1>metrica</h1>
 <code-editor [(ngModel)]="value" [language]="language" [extensions]="extensions" [languages]="languages" [indentWithTab]="false">
+</code-editor>
+<div class="results">
+    <div *ngIf="error" class="error">{{ error }}</div>
+
+    <div *ngIf="base_table" class="base_table">
+        <h3>Основная Таблица Метрики: {{base_table}}</h3>
+    </div>
+
+    <div *ngIf="metrics.length" class="metrics">
+        <h3>Метрики:</h3>
+        <ul>
+            <li *ngFor="let metric of metrics">{{ metric }}</li>
+        </ul>
+    </div>
+
+    <div *ngIf="parameters.length" class="parameters">
+        <h3>Параметры:</h3>
+        <ul>
+            <li *ngFor="let param of parameters">{{ param }}</li>
+        </ul>
+    </div>
+</div>

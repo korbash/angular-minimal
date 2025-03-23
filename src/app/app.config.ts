@@ -27,7 +27,7 @@ const delayInterceptor: HttpInterceptorFn = (
   next: HttpHandlerFn
 ) => {
   return next(req).pipe(
-    delay(1000) // Задержка для всех запросов                                                
+    delay(300) // Задержка для всех запросов                                                
   );
 };  
 
