@@ -14,8 +14,7 @@ import {
   provideHttpClient,
   withInterceptors,
   HttpHandlerFn,
-  HttpRequest,
-  HttpInterceptorFn
+  HttpRequest, HttpInterceptorFn
 } from '@angular/common/http';
 import { BASE_PATH } from './api';
 

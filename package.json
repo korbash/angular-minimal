@@ -9,6 +9,12 @@
     "generate:api": "openapi-generator-cli generate -g typescript-angular -i http://127.0.0.1:8000/openapi.json -o src/app/api -p=ngVersion=19.0.0,fileNaming=kebab-case,disallowAdditionalPertiesIfNotpresent=false",
     "postgenerate:api": "prettier --write src/app/api"
   },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "printWidth": 80,
+    "trailingComma": "es5"
+  },
   "private": true,
   "dependencies": {
     "@acrodata/code-editor": "^0.5.1",
@@ -31,8 +37,14 @@
     "@angular-devkit/build-angular": "^19.2.3",
     "@angular/cli": "^19.2.3",
     "@angular/compiler-cli": "^19.2.0",
+    "@typescript-eslint/eslint-plugin": "^8.27.0",
+    "@typescript-eslint/parser": "^8.27.0",
     "angular-eslint": "19.2.1",
-    "eslint": "^9.22.0",
+    "eslint": "^9.23.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "prettier": "^3.5.3",
+    "prettier-eslint": "^16.3.0",
     "typescript": "~5.7.2",
     "typescript-eslint": "8.26.0"
   }
