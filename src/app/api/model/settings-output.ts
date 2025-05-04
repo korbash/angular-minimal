@@ -7,9 +7,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { SQLNamespace } from "./sql-namespace";
-import { DBconnectionOutput } from "./d-bconnection-output";
-import { QueryFormating } from "./query-formating";
+import { SQLNamespace } from './sql-namespace';
+import { DBconnectionOutput } from './d-bconnection-output';
+import { QueryFormating } from './query-formating';
 
 export interface SettingsOutput {
   log_level?: SettingsOutput.LogLevelEnum;
@@ -23,25 +23,25 @@ export interface SettingsOutput {
 }
 export namespace SettingsOutput {
   export type LogLevelEnum =
-    | "CRITICAL"
-    | "ERROR"
-    | "WARNING"
-    | "INFO"
-    | "DEBUG"
-    | "NOTSET";
+    | 'CRITICAL'
+    | 'ERROR'
+    | 'WARNING'
+    | 'INFO'
+    | 'DEBUG'
+    | 'NOTSET';
   export const LogLevelEnum = {
-    Critical: "CRITICAL" as LogLevelEnum,
-    Error: "ERROR" as LogLevelEnum,
-    Warning: "WARNING" as LogLevelEnum,
-    Info: "INFO" as LogLevelEnum,
-    Debug: "DEBUG" as LogLevelEnum,
-    Notset: "NOTSET" as LogLevelEnum,
+    Critical: 'CRITICAL' as LogLevelEnum,
+    Error: 'ERROR' as LogLevelEnum,
+    Warning: 'WARNING' as LogLevelEnum,
+    Info: 'INFO' as LogLevelEnum,
+    Debug: 'DEBUG' as LogLevelEnum,
+    Notset: 'NOTSET' as LogLevelEnum,
   };
-  export type EnvEnum = "development" | "testing" | "default" | "production";
+  export type EnvEnum = 'development' | 'testing' | 'default' | 'production';
   export const EnvEnum = {
-    Development: "development" as EnvEnum,
-    Testing: "testing" as EnvEnum,
-    Default: "default" as EnvEnum,
-    Production: "production" as EnvEnum,
+    Development: 'development' as EnvEnum,
+    Testing: 'testing' as EnvEnum,
+    Default: 'default' as EnvEnum,
+    Production: 'production' as EnvEnum,
   };
 }

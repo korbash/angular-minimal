@@ -7,7 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ValidationErrorLocInner } from "./validation-error-loc-inner";
+import { ValidationErrorLocInner } from './validation-error-loc-inner';
 
 export interface ValidationError {
   loc: Array<ValidationErrorLocInner>;

@@ -1,4 +1,8 @@
-import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';
+import {
+  ApplicationConfig,
+  provideZoneChangeDetection,
+  importProvidersFrom,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { delay, tap } from 'rxjs/operators';
 
@@ -14,28 +18,33 @@ import {
   provideHttpClient,
   withInterceptors,
   HttpHandlerFn,
-  HttpRequest, HttpInterceptorFn
+  HttpRequest,
+  HttpInterceptorFn,
 } from '@angular/common/http';
 import { BASE_PATH } from './api';
 
 registerLocaleData(en);
 
-// Правильный интерцептор с типами                                                           
+// Правильный интерцептор с типами
 const delayInterceptor: HttpInterceptorFn = (
   req: HttpRequest<unknown>,
   next: HttpHandlerFn
 ) => {
   return next(req).pipe(
-    delay(300) // Задержка для всех запросов                                                
+    delay(300) // Задержка для всех запросов
   );
-};  
+};
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideNzIcons(icons), provideNzI18n(en_US), importProvidersFrom(FormsModule), provideAnimationsAsync(),
-  provideHttpClient(
-    withInterceptors([delayInterceptor])
-  ),
-  provideNzIcons(icons),
-  { provide: BASE_PATH, useValue: 'http://localhost:8000' },
-  ]
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideNzIcons(icons),
+    provideNzI18n(en_US),
+    importProvidersFrom(FormsModule),
+    provideAnimationsAsync(),
+    provideHttpClient(withInterceptors([delayInterceptor])),
+    provideNzIcons(icons),
+    { provide: BASE_PATH, useValue: 'http://localhost:8000' },
+  ],
 };

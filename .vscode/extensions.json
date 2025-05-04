@@ -1,7 +1,20 @@
 {
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846
   "recommendations": [
-    "angular.ng-template",
-    "rvest.vs-code-prettier-eslint"
+    // Angular Language Service: подсветка ошибок и автодополнение в шаблонах Angular
+    "Angular.ng-template",
+    // Angular Snippets (by John Papa): сниппеты для быстрого создания компонентов, сервисов, пайпов, маршрутов и т.д.
+    "johnpapa.angular2-snippets",
+    // Angular Files: генерация всех связанных файлов (компонент, шаблон, стили, тесты) по одному шаблону
+    "alexivkin.ng-file-templates",
+    // Angular Console: GUI для Angular CLI и NX – генерация, сборка, тесты, линтинг без CLI
+    "nrwl.angular-console",
+    // TypeScript Hero: автоматическая организация импортов, навигация по символам и упрощённый поиск
+    "rbbit.typescript-hero",
+    // ESLint: интеграция ESLint прямо в редакторе для проверки и исправления кода
+    "dbaeumer.vscode-eslint",
+    // Prettier – Code formatter: автоматическое форматирование кода по заданным правилам
+    "esbenp.prettier-vscode",
+    // Path Intellisense: автодополнение путей к файлам при импортах
+    "christian-kohler.path-intellisense"
   ]
 }

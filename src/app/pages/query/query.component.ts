@@ -7,7 +7,11 @@ import { keymap, EditorView } from '@codemirror/view';
 import { Prec } from '@codemirror/state';
 import { indentMore, indentLess, indentWithTab } from '@codemirror/commands';
 import {
-  acceptCompletion, completionStatus, autocompletion, closeCompletion, moveCompletionSelection 
+  acceptCompletion,
+  completionStatus,
+  autocompletion,
+  closeCompletion,
+  moveCompletionSelection,
 } from '@codemirror/autocomplete';
 import { DefaultService, MetricaResponce } from '../../api';
 import { basicSetup } from 'codemirror';
@@ -19,45 +23,49 @@ import { basicSetup } from 'codemirror';
   imports: [CommonModule, FormsModule, CodeEditor],
 })
 export class QueryComponent {
-  constructor(private apiService: DefaultService) { }
+  constructor(private apiService: DefaultService) {}
 
   value = 'SELECT * FROM table';
   language = 'sql';
   languages = languages;
-  base_table? : string = undefined;
+  base_table?: string = undefined;
   metrics: string[] = [];
   parameters: string[] = [];
   error?: string = undefined;
 
   extensions = [
     basicSetup,
-    Prec.highest(keymap.of([
-      {
-        key: 'Shift-Enter',
-        run: () => {
-          console.log("kuku");
-          this.executeQuery();
-          return true;
-        }
-      },
-      { key: 'Tab', run: acceptCompletion },
-      { key: 'Escape', run: closeCompletion },
-      { key: 'ArrowDown', run: moveCompletionSelection(true) },
-      { key: 'ArrowUp', run: moveCompletionSelection(false) },
-      indentWithTab,
-    ]))
+    Prec.highest(
+      keymap.of([
+        {
+          key: 'Shift-Enter',
+          run: () => {
+            console.log('kuku');
+            this.executeQuery();
+            return true;
+          },
+        },
+        { key: 'Tab', run: acceptCompletion },
+        { key: 'Escape', run: closeCompletion },
+        { key: 'ArrowDown', run: moveCompletionSelection(true) },
+        { key: 'ArrowUp', run: moveCompletionSelection(false) },
+        indentWithTab,
+      ])
+    ),
   ];
 
   executeQuery() {
-    this.apiService.validateMetricaMetricaValidatePost(this.value).subscribe((responce: MetricaResponce) => {
-      console.log("kuku2");
-      this.value = responce.sql;
-      this.metrics = responce.metrics;
-      this.parameters = responce.parameters;
-      this.base_table = responce.base_table;
-      // this.responce_str = JSON.stringify(responce, null, 2);
-      console.log(responce);
-      console.log("kuku3");
-    });
+    this.apiService
+      .validateMetricaMetricaValidatePost(this.value)
+      .subscribe((responce: MetricaResponce) => {
+        console.log('kuku2');
+        this.value = responce.sql;
+        this.metrics = responce.metrics;
+        this.parameters = responce.parameters;
+        this.base_table = responce.base_table;
+        // this.responce_str = JSON.stringify(responce, null, 2);
+        console.log(responce);
+        console.log('kuku3');
+      });
   }
-}     
+}

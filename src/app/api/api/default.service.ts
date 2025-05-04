@@ -9,7 +9,7 @@
  */
 /* tslint:disable:no-unused-variable member-ordering */
 
-import { Inject, Injectable, Optional } from "@angular/core";
+import { Inject, Injectable, Optional } from '@angular/core';
 import {
   HttpClient,
   HttpHeaders,
@@ -18,34 +18,34 @@ import {
   HttpEvent,
   HttpParameterCodec,
   HttpContext,
-} from "@angular/common/http";
-import { CustomHttpParameterCodec } from "../encoder";
-import { Observable } from "rxjs";
+} from '@angular/common/http';
+import { CustomHttpParameterCodec } from '../encoder';
+import { Observable } from 'rxjs';
 
 // @ts-ignore
-import { BodyValidateMetricaMetricaValidatePost } from "../model/body-validate-metrica-metrica-validate-post";
+import { BodyValidateMetricaMetricaValidatePost } from '../model/body-validate-metrica-metrica-validate-post';
 // @ts-ignore
-import { HTTPValidationError } from "../model/http-validation-error";
+import { HTTPValidationError } from '../model/http-validation-error';
 // @ts-ignore
-import { MetricaResponce } from "../model/metrica-responce";
+import { MetricaResponce } from '../model/metrica-responce';
 // @ts-ignore
-import { SettingsInput } from "../model/settings-input";
+import { SettingsInput } from '../model/settings-input';
 // @ts-ignore
-import { SettingsOutput } from "../model/settings-output";
+import { SettingsOutput } from '../model/settings-output';
 
 // @ts-ignore
-import { BASE_PATH, COLLECTION_FORMATS } from "../variables";
-import { Configuration } from "../configuration";
-import { BaseService } from "../api.base.service";
+import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
+import { Configuration } from '../configuration';
+import { BaseService } from '../api.base.service';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class DefaultService extends BaseService {
   constructor(
     protected httpClient: HttpClient,
     @Optional() @Inject(BASE_PATH) basePath: string | string[],
-    @Optional() configuration?: Configuration,
+    @Optional() configuration?: Configuration
   ) {
     super(basePath, configuration);
   }
@@ -57,50 +57,50 @@ export class DefaultService extends BaseService {
    * @param reportProgress flag to report request and response progress.
    */
   public getSettingsSettingsGet(
-    observe?: "body",
+    observe?: 'body',
     reportProgress?: boolean,
     options?: {
-      httpHeaderAccept?: "application/json";
+      httpHeaderAccept?: 'application/json';
       context?: HttpContext;
       transferCache?: boolean;
-    },
+    }
   ): Observable<SettingsOutput>;
   public getSettingsSettingsGet(
-    observe?: "response",
+    observe?: 'response',
     reportProgress?: boolean,
     options?: {
-      httpHeaderAccept?: "application/json";
+      httpHeaderAccept?: 'application/json';
       context?: HttpContext;
       transferCache?: boolean;
-    },
+    }
   ): Observable<HttpResponse<SettingsOutput>>;
   public getSettingsSettingsGet(
-    observe?: "events",
+    observe?: 'events',
     reportProgress?: boolean,
     options?: {
-      httpHeaderAccept?: "application/json";
+      httpHeaderAccept?: 'application/json';
       context?: HttpContext;
       transferCache?: boolean;
-    },
+    }
   ): Observable<HttpEvent<SettingsOutput>>;
   public getSettingsSettingsGet(
-    observe: any = "body",
+    observe: any = 'body',
     reportProgress: boolean = false,
     options?: {
-      httpHeaderAccept?: "application/json";
+      httpHeaderAccept?: 'application/json';
       context?: HttpContext;
       transferCache?: boolean;
-    },
+    }
   ): Observable<any> {
     let localVarHeaders = this.defaultHeaders;
 
     const localVarHttpHeaderAcceptSelected: string | undefined =
       options?.httpHeaderAccept ??
-      this.configuration.selectHeaderAccept(["application/json"]);
+      this.configuration.selectHeaderAccept(['application/json']);
     if (localVarHttpHeaderAcceptSelected !== undefined) {
       localVarHeaders = localVarHeaders.set(
-        "Accept",
-        localVarHttpHeaderAcceptSelected,
+        'Accept',
+        localVarHttpHeaderAcceptSelected
       );
     }
 
@@ -109,22 +109,22 @@ export class DefaultService extends BaseService {
 
     const localVarTransferCache: boolean = options?.transferCache ?? true;
 
-    let responseType_: "text" | "json" | "blob" = "json";
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
     if (localVarHttpHeaderAcceptSelected) {
-      if (localVarHttpHeaderAcceptSelected.startsWith("text")) {
-        responseType_ = "text";
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
       } else if (
         this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
       ) {
-        responseType_ = "json";
+        responseType_ = 'json';
       } else {
-        responseType_ = "blob";
+        responseType_ = 'blob';
       }
     }
 
     let localVarPath = `/settings`;
     return this.httpClient.request<SettingsOutput>(
-      "get",
+      'get',
       `${this.configuration.basePath}${localVarPath}`,
       {
         context: localVarHttpContext,
@@ -134,7 +134,7 @@ export class DefaultService extends BaseService {
         observe: observe,
         transferCache: localVarTransferCache,
         reportProgress: reportProgress,
-      },
+      }
     );
   }
 
@@ -146,47 +146,47 @@ export class DefaultService extends BaseService {
    */
   public updateSettingsSettingsPut(
     settingsInput: SettingsInput,
-    observe?: "body",
+    observe?: 'body',
     reportProgress?: boolean,
     options?: {
-      httpHeaderAccept?: "application/json";
+      httpHeaderAccept?: 'application/json';
       context?: HttpContext;
       transferCache?: boolean;
-    },
+    }
   ): Observable<SettingsOutput>;
   public updateSettingsSettingsPut(
     settingsInput: SettingsInput,
-    observe?: "response",
+    observe?: 'response',
     reportProgress?: boolean,
     options?: {
-      httpHeaderAccept?: "application/json";
+      httpHeaderAccept?: 'application/json';
       context?: HttpContext;
       transferCache?: boolean;
-    },
+    }
   ): Observable<HttpResponse<SettingsOutput>>;
   public updateSettingsSettingsPut(
     settingsInput: SettingsInput,
-    observe?: "events",
+    observe?: 'events',
     reportProgress?: boolean,
     options?: {
-      httpHeaderAccept?: "application/json";
+      httpHeaderAccept?: 'application/json';
       context?: HttpContext;
       transferCache?: boolean;
-    },
+    }
   ): Observable<HttpEvent<SettingsOutput>>;
   public updateSettingsSettingsPut(
     settingsInput: SettingsInput,
-    observe: any = "body",
+    observe: any = 'body',
     reportProgress: boolean = false,
     options?: {
-      httpHeaderAccept?: "application/json";
+      httpHeaderAccept?: 'application/json';
       context?: HttpContext;
       transferCache?: boolean;
-    },
+    }
   ): Observable<any> {
     if (settingsInput === null || settingsInput === undefined) {
       throw new Error(
-        "Required parameter settingsInput was null or undefined when calling updateSettingsSettingsPut.",
+        'Required parameter settingsInput was null or undefined when calling updateSettingsSettingsPut.'
       );
     }
 
@@ -194,11 +194,11 @@ export class DefaultService extends BaseService {
 
     const localVarHttpHeaderAcceptSelected: string | undefined =
       options?.httpHeaderAccept ??
-      this.configuration.selectHeaderAccept(["application/json"]);
+      this.configuration.selectHeaderAccept(['application/json']);
     if (localVarHttpHeaderAcceptSelected !== undefined) {
       localVarHeaders = localVarHeaders.set(
-        "Accept",
-        localVarHttpHeaderAcceptSelected,
+        'Accept',
+        localVarHttpHeaderAcceptSelected
       );
     }
 
@@ -208,32 +208,32 @@ export class DefaultService extends BaseService {
     const localVarTransferCache: boolean = options?.transferCache ?? true;
 
     // to determine the Content-Type header
-    const consumes: string[] = ["application/json"];
+    const consumes: string[] = ['application/json'];
     const httpContentTypeSelected: string | undefined =
       this.configuration.selectHeaderContentType(consumes);
     if (httpContentTypeSelected !== undefined) {
       localVarHeaders = localVarHeaders.set(
-        "Content-Type",
-        httpContentTypeSelected,
+        'Content-Type',
+        httpContentTypeSelected
       );
     }
 
-    let responseType_: "text" | "json" | "blob" = "json";
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
     if (localVarHttpHeaderAcceptSelected) {
-      if (localVarHttpHeaderAcceptSelected.startsWith("text")) {
-        responseType_ = "text";
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
       } else if (
         this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
       ) {
-        responseType_ = "json";
+        responseType_ = 'json';
       } else {
-        responseType_ = "blob";
+        responseType_ = 'blob';
       }
     }
 
     let localVarPath = `/settings`;
     return this.httpClient.request<SettingsOutput>(
-      "put",
+      'put',
       `${this.configuration.basePath}${localVarPath}`,
       {
         context: localVarHttpContext,
@@ -244,7 +244,7 @@ export class DefaultService extends BaseService {
         observe: observe,
         transferCache: localVarTransferCache,
         reportProgress: reportProgress,
-      },
+      }
     );
   }
 
@@ -259,50 +259,50 @@ export class DefaultService extends BaseService {
   public validateMetricaMetricaValidatePost(
     sql: string,
     bodyValidateMetricaMetricaValidatePost?: BodyValidateMetricaMetricaValidatePost,
-    observe?: "body",
+    observe?: 'body',
     reportProgress?: boolean,
     options?: {
-      httpHeaderAccept?: "application/json";
+      httpHeaderAccept?: 'application/json';
       context?: HttpContext;
       transferCache?: boolean;
-    },
+    }
   ): Observable<MetricaResponce>;
   public validateMetricaMetricaValidatePost(
     sql: string,
     bodyValidateMetricaMetricaValidatePost?: BodyValidateMetricaMetricaValidatePost,
-    observe?: "response",
+    observe?: 'response',
     reportProgress?: boolean,
     options?: {
-      httpHeaderAccept?: "application/json";
+      httpHeaderAccept?: 'application/json';
       context?: HttpContext;
       transferCache?: boolean;
-    },
+    }
   ): Observable<HttpResponse<MetricaResponce>>;
   public validateMetricaMetricaValidatePost(
     sql: string,
     bodyValidateMetricaMetricaValidatePost?: BodyValidateMetricaMetricaValidatePost,
-    observe?: "events",
+    observe?: 'events',
     reportProgress?: boolean,
     options?: {
-      httpHeaderAccept?: "application/json";
+      httpHeaderAccept?: 'application/json';
       context?: HttpContext;
       transferCache?: boolean;
-    },
+    }
   ): Observable<HttpEvent<MetricaResponce>>;
   public validateMetricaMetricaValidatePost(
     sql: string,
     bodyValidateMetricaMetricaValidatePost?: BodyValidateMetricaMetricaValidatePost,
-    observe: any = "body",
+    observe: any = 'body',
     reportProgress: boolean = false,
     options?: {
-      httpHeaderAccept?: "application/json";
+      httpHeaderAccept?: 'application/json';
       context?: HttpContext;
       transferCache?: boolean;
-    },
+    }
   ): Observable<any> {
     if (sql === null || sql === undefined) {
       throw new Error(
-        "Required parameter sql was null or undefined when calling validateMetricaMetricaValidatePost.",
+        'Required parameter sql was null or undefined when calling validateMetricaMetricaValidatePost.'
       );
     }
 
@@ -310,18 +310,18 @@ export class DefaultService extends BaseService {
     localVarQueryParameters = this.addToHttpParams(
       localVarQueryParameters,
       <any>sql,
-      "sql",
+      'sql'
     );
 
     let localVarHeaders = this.defaultHeaders;
 
     const localVarHttpHeaderAcceptSelected: string | undefined =
       options?.httpHeaderAccept ??
-      this.configuration.selectHeaderAccept(["application/json"]);
+      this.configuration.selectHeaderAccept(['application/json']);
     if (localVarHttpHeaderAcceptSelected !== undefined) {
       localVarHeaders = localVarHeaders.set(
-        "Accept",
-        localVarHttpHeaderAcceptSelected,
+        'Accept',
+        localVarHttpHeaderAcceptSelected
       );
     }
 
@@ -331,32 +331,32 @@ export class DefaultService extends BaseService {
     const localVarTransferCache: boolean = options?.transferCache ?? true;
 
     // to determine the Content-Type header
-    const consumes: string[] = ["application/json"];
+    const consumes: string[] = ['application/json'];
     const httpContentTypeSelected: string | undefined =
       this.configuration.selectHeaderContentType(consumes);
     if (httpContentTypeSelected !== undefined) {
       localVarHeaders = localVarHeaders.set(
-        "Content-Type",
-        httpContentTypeSelected,
+        'Content-Type',
+        httpContentTypeSelected
       );
     }
 
-    let responseType_: "text" | "json" | "blob" = "json";
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
     if (localVarHttpHeaderAcceptSelected) {
-      if (localVarHttpHeaderAcceptSelected.startsWith("text")) {
-        responseType_ = "text";
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
       } else if (
         this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
       ) {
-        responseType_ = "json";
+        responseType_ = 'json';
       } else {
-        responseType_ = "blob";
+        responseType_ = 'blob';
       }
     }
 
     let localVarPath = `/metrica/validate`;
     return this.httpClient.request<MetricaResponce>(
-      "post",
+      'post',
       `${this.configuration.basePath}${localVarPath}`,
       {
         context: localVarHttpContext,
@@ -368,7 +368,7 @@ export class DefaultService extends BaseService {
         observe: observe,
         transferCache: localVarTransferCache,
         reportProgress: reportProgress,
-      },
+      }
     );
   }
 }

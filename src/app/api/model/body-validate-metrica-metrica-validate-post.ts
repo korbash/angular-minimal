@@ -7,8 +7,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { SQLNamespace } from "./sql-namespace";
-import { QueryFormating } from "./query-formating";
+import { SQLNamespace } from './sql-namespace';
+import { QueryFormating } from './query-formating';
 
 export interface BodyValidateMetricaMetricaValidatePost {
   ns?: SQLNamespace;

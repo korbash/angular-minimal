@@ -7,7 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ValidationError } from "./validation-error";
+import { ValidationError } from './validation-error';
 
 export interface HTTPValidationError {
   detail?: Array<ValidationError>;

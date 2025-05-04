@@ -15,9 +15,9 @@ export interface QueryFormating {
   max_text_width?: number;
 }
 export namespace QueryFormating {
-  export type NormalizeFunctionsEnum = "upper" | "lower";
+  export type NormalizeFunctionsEnum = 'upper' | 'lower';
   export const NormalizeFunctionsEnum = {
-    Upper: "upper" as NormalizeFunctionsEnum,
-    Lower: "lower" as NormalizeFunctionsEnum,
+    Upper: 'upper' as NormalizeFunctionsEnum,
+    Lower: 'lower' as NormalizeFunctionsEnum,
   };
 }
