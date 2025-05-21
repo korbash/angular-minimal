@@ -10,5 +10,5 @@
 import { ValidationError } from './validation-error';
 
 export interface HTTPValidationError {
-  detail?: Array<ValidationError>;
+  detail?: ValidationError[];
 }

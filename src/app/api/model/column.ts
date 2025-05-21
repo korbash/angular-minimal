@@ -8,10 +8,11 @@
  * Do not edit the class manually.
  */
 
-/**
- * SQLAlchemy database connection configuration.
- */
-export interface DBconnectionOutput {
-  connect_args?: object;
-  engine_kwargs?: object;
+export interface Column {
+  name: string;
+  type: string;
+  nullable: boolean;
+  default?: any | null;
+  comment?: string;
+  properties?: Record<string, string[]>;
 }

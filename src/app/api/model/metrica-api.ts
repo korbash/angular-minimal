@@ -8,12 +8,9 @@
  * Do not edit the class manually.
  */
 
-/**
- * Add a metric.
- */
-export interface MetricaResponce {
+export interface MetricaApi {
   sql: string;
   base_table: string;
-  metrics: Array<string>;
-  parameters: Array<string>;
+  metrics: Set<string>;
+  parameters: Set<string>;
 }

@@ -13,7 +13,7 @@ import {
   closeCompletion,
   moveCompletionSelection,
 } from '@codemirror/autocomplete';
-import { DefaultService, MetricaResponce } from '../../api';
+import { DefaultService, MetricaApi } from '../../api';
 import { basicSetup } from 'codemirror';
 
 @Component({
@@ -57,11 +57,11 @@ export class QueryComponent {
   executeQuery() {
     this.apiService
       .validateMetricaMetricaValidatePost(this.value)
-      .subscribe((responce: MetricaResponce) => {
+      .subscribe((responce: MetricaApi) => {
         console.log('kuku2');
         this.value = responce.sql;
-        this.metrics = responce.metrics;
-        this.parameters = responce.parameters;
+        this.metrics = Array.from(responce.metrics);
+        this.parameters = Array.from(responce.parameters);
         this.base_table = responce.base_table;
         // this.responce_str = JSON.stringify(responce, null, 2);
         console.log(responce);

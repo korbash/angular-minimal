@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DefaultService, SettingsOutput } from '../../api';
+import { DefaultService } from '../../api';
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
@@ -14,10 +14,8 @@ export class SettingsComponent implements OnInit {
   }
 
   private loadSettings() {
-    this.apiService
-      .getSettingsSettingsGet()
-      .subscribe((data: SettingsOutput) => {
-        this.setings_str = JSON.stringify(data, null, 2);
-      });
+    this.apiService.getTablesInfoSchemaTableGet().subscribe((data) => {
+      this.setings_str = JSON.stringify(data, null, 2);
+    });
   }
 }

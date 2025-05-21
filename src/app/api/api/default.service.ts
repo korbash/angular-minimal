@@ -7,7 +7,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-/* tslint:disable:no-unused-variable member-ordering */
 
 import { Inject, Injectable, Optional } from '@angular/core';
 import {
@@ -27,11 +26,9 @@ import { BodyValidateMetricaMetricaValidatePost } from '../model/body-validate-m
 // @ts-ignore
 import { HTTPValidationError } from '../model/http-validation-error';
 // @ts-ignore
-import { MetricaResponce } from '../model/metrica-responce';
+import { MetricaApi } from '../model/metrica-api';
 // @ts-ignore
-import { SettingsInput } from '../model/settings-input';
-// @ts-ignore
-import { SettingsOutput } from '../model/settings-output';
+import { TableApi } from '../model/table-api';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS } from '../variables';
@@ -51,12 +48,16 @@ export class DefaultService extends BaseService {
   }
 
   /**
-   * Get Settings
-   * Get database settings
+   * Get Column Info
+   * Get column information for specific column
+   * @param tableName Name of the table to get info for
+   * @param columnName Name of the column to get info for
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public getSettingsSettingsGet(
+  public getColumnInfoSchemaTableTableNameColumnColumnNameGet(
+    tableName: string,
+    columnName: string,
     observe?: 'body',
     reportProgress?: boolean,
     options?: {
@@ -64,8 +65,10 @@ export class DefaultService extends BaseService {
       context?: HttpContext;
       transferCache?: boolean;
     }
-  ): Observable<SettingsOutput>;
-  public getSettingsSettingsGet(
+  ): Observable<any>;
+  public getColumnInfoSchemaTableTableNameColumnColumnNameGet(
+    tableName: string,
+    columnName: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: {
@@ -73,8 +76,10 @@ export class DefaultService extends BaseService {
       context?: HttpContext;
       transferCache?: boolean;
     }
-  ): Observable<HttpResponse<SettingsOutput>>;
-  public getSettingsSettingsGet(
+  ): Observable<HttpResponse<any>>;
+  public getColumnInfoSchemaTableTableNameColumnColumnNameGet(
+    tableName: string,
+    columnName: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: {
@@ -82,16 +87,29 @@ export class DefaultService extends BaseService {
       context?: HttpContext;
       transferCache?: boolean;
     }
-  ): Observable<HttpEvent<SettingsOutput>>;
-  public getSettingsSettingsGet(
+  ): Observable<HttpEvent<any>>;
+  public getColumnInfoSchemaTableTableNameColumnColumnNameGet(
+    tableName: string,
+    columnName: string,
     observe: any = 'body',
-    reportProgress: boolean = false,
+    reportProgress = false,
     options?: {
       httpHeaderAccept?: 'application/json';
       context?: HttpContext;
       transferCache?: boolean;
     }
   ): Observable<any> {
+    if (tableName === null || tableName === undefined) {
+      throw new Error(
+        'Required parameter tableName was null or undefined when calling getColumnInfoSchemaTableTableNameColumnColumnNameGet.'
+      );
+    }
+    if (columnName === null || columnName === undefined) {
+      throw new Error(
+        'Required parameter columnName was null or undefined when calling getColumnInfoSchemaTableTableNameColumnColumnNameGet.'
+      );
+    }
+
     let localVarHeaders = this.defaultHeaders;
 
     const localVarHttpHeaderAcceptSelected: string | undefined =
@@ -122,14 +140,111 @@ export class DefaultService extends BaseService {
       }
     }
 
-    let localVarPath = `/settings`;
-    return this.httpClient.request<SettingsOutput>(
+    const localVarPath = `/schema/table/${this.configuration.encodeParam({ name: 'tableName', value: tableName, in: 'path', style: 'simple', explode: false, dataType: 'string', dataFormat: undefined })}/column/${this.configuration.encodeParam({ name: 'columnName', value: columnName, in: 'path', style: 'simple', explode: false, dataType: 'string', dataFormat: undefined })}`;
+    const { basePath, withCredentials } = this.configuration;
+    return this.httpClient.request<any>('get', `${basePath}${localVarPath}`, {
+      context: localVarHttpContext,
+      responseType: responseType_ as any,
+      ...(withCredentials ? { withCredentials } : {}),
+      headers: localVarHeaders,
+      observe: observe,
+      transferCache: localVarTransferCache,
+      reportProgress: reportProgress,
+    });
+  }
+
+  /**
+   * Get Columns Info
+   * Get columns information for specific table
+   * @param tableName Name of the table to get info for
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public getColumnsInfoSchemaTableTableNameColumnGet(
+    tableName: string,
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: {
+      httpHeaderAccept?: 'application/json';
+      context?: HttpContext;
+      transferCache?: boolean;
+    }
+  ): Observable<string[]>;
+  public getColumnsInfoSchemaTableTableNameColumnGet(
+    tableName: string,
+    observe?: 'response',
+    reportProgress?: boolean,
+    options?: {
+      httpHeaderAccept?: 'application/json';
+      context?: HttpContext;
+      transferCache?: boolean;
+    }
+  ): Observable<HttpResponse<string[]>>;
+  public getColumnsInfoSchemaTableTableNameColumnGet(
+    tableName: string,
+    observe?: 'events',
+    reportProgress?: boolean,
+    options?: {
+      httpHeaderAccept?: 'application/json';
+      context?: HttpContext;
+      transferCache?: boolean;
+    }
+  ): Observable<HttpEvent<string[]>>;
+  public getColumnsInfoSchemaTableTableNameColumnGet(
+    tableName: string,
+    observe: any = 'body',
+    reportProgress = false,
+    options?: {
+      httpHeaderAccept?: 'application/json';
+      context?: HttpContext;
+      transferCache?: boolean;
+    }
+  ): Observable<any> {
+    if (tableName === null || tableName === undefined) {
+      throw new Error(
+        'Required parameter tableName was null or undefined when calling getColumnsInfoSchemaTableTableNameColumnGet.'
+      );
+    }
+
+    let localVarHeaders = this.defaultHeaders;
+
+    const localVarHttpHeaderAcceptSelected: string | undefined =
+      options?.httpHeaderAccept ??
+      this.configuration.selectHeaderAccept(['application/json']);
+    if (localVarHttpHeaderAcceptSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Accept',
+        localVarHttpHeaderAcceptSelected
+      );
+    }
+
+    const localVarHttpContext: HttpContext =
+      options?.context ?? new HttpContext();
+
+    const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
+    if (localVarHttpHeaderAcceptSelected) {
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
+      } else if (
+        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
+      ) {
+        responseType_ = 'json';
+      } else {
+        responseType_ = 'blob';
+      }
+    }
+
+    const localVarPath = `/schema/table/${this.configuration.encodeParam({ name: 'tableName', value: tableName, in: 'path', style: 'simple', explode: false, dataType: 'string', dataFormat: undefined })}/column`;
+    const { basePath, withCredentials } = this.configuration;
+    return this.httpClient.request<string[]>(
       'get',
-      `${this.configuration.basePath}${localVarPath}`,
+      `${basePath}${localVarPath}`,
       {
         context: localVarHttpContext,
-        responseType: <any>responseType_,
-        withCredentials: this.configuration.withCredentials,
+        responseType: responseType_ as any,
+        ...(withCredentials ? { withCredentials } : {}),
         headers: localVarHeaders,
         observe: observe,
         transferCache: localVarTransferCache,
@@ -139,13 +254,14 @@ export class DefaultService extends BaseService {
   }
 
   /**
-   * Update Settings
-   * @param settingsInput
+   * Get Table Info
+   * Get column information for specific table
+   * @param tableName Name of the table to get info for
    * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
    * @param reportProgress flag to report request and response progress.
    */
-  public updateSettingsSettingsPut(
-    settingsInput: SettingsInput,
+  public getTableInfoSchemaTableTableNameGet(
+    tableName: string,
     observe?: 'body',
     reportProgress?: boolean,
     options?: {
@@ -153,9 +269,9 @@ export class DefaultService extends BaseService {
       context?: HttpContext;
       transferCache?: boolean;
     }
-  ): Observable<SettingsOutput>;
-  public updateSettingsSettingsPut(
-    settingsInput: SettingsInput,
+  ): Observable<TableApi>;
+  public getTableInfoSchemaTableTableNameGet(
+    tableName: string,
     observe?: 'response',
     reportProgress?: boolean,
     options?: {
@@ -163,9 +279,9 @@ export class DefaultService extends BaseService {
       context?: HttpContext;
       transferCache?: boolean;
     }
-  ): Observable<HttpResponse<SettingsOutput>>;
-  public updateSettingsSettingsPut(
-    settingsInput: SettingsInput,
+  ): Observable<HttpResponse<TableApi>>;
+  public getTableInfoSchemaTableTableNameGet(
+    tableName: string,
     observe?: 'events',
     reportProgress?: boolean,
     options?: {
@@ -173,20 +289,20 @@ export class DefaultService extends BaseService {
       context?: HttpContext;
       transferCache?: boolean;
     }
-  ): Observable<HttpEvent<SettingsOutput>>;
-  public updateSettingsSettingsPut(
-    settingsInput: SettingsInput,
+  ): Observable<HttpEvent<TableApi>>;
+  public getTableInfoSchemaTableTableNameGet(
+    tableName: string,
     observe: any = 'body',
-    reportProgress: boolean = false,
+    reportProgress = false,
     options?: {
       httpHeaderAccept?: 'application/json';
       context?: HttpContext;
       transferCache?: boolean;
     }
   ): Observable<any> {
-    if (settingsInput === null || settingsInput === undefined) {
+    if (tableName === null || tableName === undefined) {
       throw new Error(
-        'Required parameter settingsInput was null or undefined when calling updateSettingsSettingsPut.'
+        'Required parameter tableName was null or undefined when calling getTableInfoSchemaTableTableNameGet.'
       );
     }
 
@@ -207,16 +323,94 @@ export class DefaultService extends BaseService {
 
     const localVarTransferCache: boolean = options?.transferCache ?? true;
 
-    // to determine the Content-Type header
-    const consumes: string[] = ['application/json'];
-    const httpContentTypeSelected: string | undefined =
-      this.configuration.selectHeaderContentType(consumes);
-    if (httpContentTypeSelected !== undefined) {
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
+    if (localVarHttpHeaderAcceptSelected) {
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
+      } else if (
+        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
+      ) {
+        responseType_ = 'json';
+      } else {
+        responseType_ = 'blob';
+      }
+    }
+
+    const localVarPath = `/schema/table/${this.configuration.encodeParam({ name: 'tableName', value: tableName, in: 'path', style: 'simple', explode: false, dataType: 'string', dataFormat: undefined })}`;
+    const { basePath, withCredentials } = this.configuration;
+    return this.httpClient.request<TableApi>(
+      'get',
+      `${basePath}${localVarPath}`,
+      {
+        context: localVarHttpContext,
+        responseType: responseType_ as any,
+        ...(withCredentials ? { withCredentials } : {}),
+        headers: localVarHeaders,
+        observe: observe,
+        transferCache: localVarTransferCache,
+        reportProgress: reportProgress,
+      }
+    );
+  }
+
+  /**
+   * Get Tables Info
+   * Get column information for specific table
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public getTablesInfoSchemaTableGet(
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: {
+      httpHeaderAccept?: 'application/json';
+      context?: HttpContext;
+      transferCache?: boolean;
+    }
+  ): Observable<string[]>;
+  public getTablesInfoSchemaTableGet(
+    observe?: 'response',
+    reportProgress?: boolean,
+    options?: {
+      httpHeaderAccept?: 'application/json';
+      context?: HttpContext;
+      transferCache?: boolean;
+    }
+  ): Observable<HttpResponse<string[]>>;
+  public getTablesInfoSchemaTableGet(
+    observe?: 'events',
+    reportProgress?: boolean,
+    options?: {
+      httpHeaderAccept?: 'application/json';
+      context?: HttpContext;
+      transferCache?: boolean;
+    }
+  ): Observable<HttpEvent<string[]>>;
+  public getTablesInfoSchemaTableGet(
+    observe: any = 'body',
+    reportProgress = false,
+    options?: {
+      httpHeaderAccept?: 'application/json';
+      context?: HttpContext;
+      transferCache?: boolean;
+    }
+  ): Observable<any> {
+    let localVarHeaders = this.defaultHeaders;
+
+    const localVarHttpHeaderAcceptSelected: string | undefined =
+      options?.httpHeaderAccept ??
+      this.configuration.selectHeaderAccept(['application/json']);
+    if (localVarHttpHeaderAcceptSelected !== undefined) {
       localVarHeaders = localVarHeaders.set(
-        'Content-Type',
-        httpContentTypeSelected
+        'Accept',
+        localVarHttpHeaderAcceptSelected
       );
     }
+
+    const localVarHttpContext: HttpContext =
+      options?.context ?? new HttpContext();
+
+    const localVarTransferCache: boolean = options?.transferCache ?? true;
 
     let responseType_: 'text' | 'json' | 'blob' = 'json';
     if (localVarHttpHeaderAcceptSelected) {
@@ -231,21 +425,106 @@ export class DefaultService extends BaseService {
       }
     }
 
-    let localVarPath = `/settings`;
-    return this.httpClient.request<SettingsOutput>(
-      'put',
-      `${this.configuration.basePath}${localVarPath}`,
+    const localVarPath = `/schema/table`;
+    const { basePath, withCredentials } = this.configuration;
+    return this.httpClient.request<string[]>(
+      'get',
+      `${basePath}${localVarPath}`,
       {
         context: localVarHttpContext,
-        body: settingsInput,
-        responseType: <any>responseType_,
-        withCredentials: this.configuration.withCredentials,
+        responseType: responseType_ as any,
+        ...(withCredentials ? { withCredentials } : {}),
         headers: localVarHeaders,
         observe: observe,
         transferCache: localVarTransferCache,
         reportProgress: reportProgress,
       }
     );
+  }
+
+  /**
+   * Refresh Schema
+   * Refresh database schema
+   * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+   * @param reportProgress flag to report request and response progress.
+   */
+  public refreshSchemaSchemaRefreshPost(
+    observe?: 'body',
+    reportProgress?: boolean,
+    options?: {
+      httpHeaderAccept?: 'application/json';
+      context?: HttpContext;
+      transferCache?: boolean;
+    }
+  ): Observable<any>;
+  public refreshSchemaSchemaRefreshPost(
+    observe?: 'response',
+    reportProgress?: boolean,
+    options?: {
+      httpHeaderAccept?: 'application/json';
+      context?: HttpContext;
+      transferCache?: boolean;
+    }
+  ): Observable<HttpResponse<any>>;
+  public refreshSchemaSchemaRefreshPost(
+    observe?: 'events',
+    reportProgress?: boolean,
+    options?: {
+      httpHeaderAccept?: 'application/json';
+      context?: HttpContext;
+      transferCache?: boolean;
+    }
+  ): Observable<HttpEvent<any>>;
+  public refreshSchemaSchemaRefreshPost(
+    observe: any = 'body',
+    reportProgress = false,
+    options?: {
+      httpHeaderAccept?: 'application/json';
+      context?: HttpContext;
+      transferCache?: boolean;
+    }
+  ): Observable<any> {
+    let localVarHeaders = this.defaultHeaders;
+
+    const localVarHttpHeaderAcceptSelected: string | undefined =
+      options?.httpHeaderAccept ??
+      this.configuration.selectHeaderAccept(['application/json']);
+    if (localVarHttpHeaderAcceptSelected !== undefined) {
+      localVarHeaders = localVarHeaders.set(
+        'Accept',
+        localVarHttpHeaderAcceptSelected
+      );
+    }
+
+    const localVarHttpContext: HttpContext =
+      options?.context ?? new HttpContext();
+
+    const localVarTransferCache: boolean = options?.transferCache ?? true;
+
+    let responseType_: 'text' | 'json' | 'blob' = 'json';
+    if (localVarHttpHeaderAcceptSelected) {
+      if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+        responseType_ = 'text';
+      } else if (
+        this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)
+      ) {
+        responseType_ = 'json';
+      } else {
+        responseType_ = 'blob';
+      }
+    }
+
+    const localVarPath = `/schema/refresh`;
+    const { basePath, withCredentials } = this.configuration;
+    return this.httpClient.request<any>('post', `${basePath}${localVarPath}`, {
+      context: localVarHttpContext,
+      responseType: responseType_ as any,
+      ...(withCredentials ? { withCredentials } : {}),
+      headers: localVarHeaders,
+      observe: observe,
+      transferCache: localVarTransferCache,
+      reportProgress: reportProgress,
+    });
   }
 
   /**
@@ -266,7 +545,7 @@ export class DefaultService extends BaseService {
       context?: HttpContext;
       transferCache?: boolean;
     }
-  ): Observable<MetricaResponce>;
+  ): Observable<MetricaApi>;
   public validateMetricaMetricaValidatePost(
     sql: string,
     bodyValidateMetricaMetricaValidatePost?: BodyValidateMetricaMetricaValidatePost,
@@ -277,7 +556,7 @@ export class DefaultService extends BaseService {
       context?: HttpContext;
       transferCache?: boolean;
     }
-  ): Observable<HttpResponse<MetricaResponce>>;
+  ): Observable<HttpResponse<MetricaApi>>;
   public validateMetricaMetricaValidatePost(
     sql: string,
     bodyValidateMetricaMetricaValidatePost?: BodyValidateMetricaMetricaValidatePost,
@@ -288,12 +567,12 @@ export class DefaultService extends BaseService {
       context?: HttpContext;
       transferCache?: boolean;
     }
-  ): Observable<HttpEvent<MetricaResponce>>;
+  ): Observable<HttpEvent<MetricaApi>>;
   public validateMetricaMetricaValidatePost(
     sql: string,
     bodyValidateMetricaMetricaValidatePost?: BodyValidateMetricaMetricaValidatePost,
     observe: any = 'body',
-    reportProgress: boolean = false,
+    reportProgress = false,
     options?: {
       httpHeaderAccept?: 'application/json';
       context?: HttpContext;
@@ -309,7 +588,7 @@ export class DefaultService extends BaseService {
     let localVarQueryParameters = new HttpParams({ encoder: this.encoder });
     localVarQueryParameters = this.addToHttpParams(
       localVarQueryParameters,
-      <any>sql,
+      sql as any,
       'sql'
     );
 
@@ -354,16 +633,17 @@ export class DefaultService extends BaseService {
       }
     }
 
-    let localVarPath = `/metrica/validate`;
-    return this.httpClient.request<MetricaResponce>(
+    const localVarPath = `/metrica-validate`;
+    const { basePath, withCredentials } = this.configuration;
+    return this.httpClient.request<MetricaApi>(
       'post',
-      `${this.configuration.basePath}${localVarPath}`,
+      `${basePath}${localVarPath}`,
       {
         context: localVarHttpContext,
         body: bodyValidateMetricaMetricaValidatePost,
         params: localVarQueryParameters,
-        responseType: <any>responseType_,
-        withCredentials: this.configuration.withCredentials,
+        responseType: responseType_ as any,
+        ...(withCredentials ? { withCredentials } : {}),
         headers: localVarHeaders,
         observe: observe,
         transferCache: localVarTransferCache,

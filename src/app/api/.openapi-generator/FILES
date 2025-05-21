@@ -1,4 +1,5 @@
 .gitignore
+.openapi-generator-ignore
 README.md
 api.base.service.ts
 api.module.ts
@@ -9,15 +10,13 @@ encoder.ts
 git_push.sh
 index.ts
 model/body-validate-metrica-metrica-validate-post.ts
-model/d-bconnection-input.ts
-model/d-bconnection-output.ts
+model/column.ts
 model/http-validation-error.ts
-model/metrica-responce.ts
+model/metrica-api.ts
 model/models.ts
-model/query-formating.ts
-model/settings-input.ts
-model/settings-output.ts
+model/query-formatting.ts
 model/sql-namespace.ts
+model/table-api.ts
 model/validation-error-loc-inner.ts
 model/validation-error.ts
 param.ts

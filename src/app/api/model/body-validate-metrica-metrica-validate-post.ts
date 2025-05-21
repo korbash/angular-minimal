@@ -7,10 +7,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { QueryFormatting } from './query-formatting';
 import { SQLNamespace } from './sql-namespace';
-import { QueryFormating } from './query-formating';
 
 export interface BodyValidateMetricaMetricaValidatePost {
   ns?: SQLNamespace;
-  qf?: QueryFormating;
+  qf?: QueryFormatting;
 }

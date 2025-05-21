@@ -8,16 +8,17 @@
  * Do not edit the class manually.
  */
 
-export interface QueryFormating {
+export interface QueryFormatting {
   dialect?: string;
   normalize?: boolean;
-  normalize_functions?: QueryFormating.NormalizeFunctionsEnum;
+  normalize_functions?: QueryFormatting.NormalizeFunctionsEnum;
   max_text_width?: number;
 }
-export namespace QueryFormating {
-  export type NormalizeFunctionsEnum = 'upper' | 'lower';
+export namespace QueryFormatting {
   export const NormalizeFunctionsEnum = {
-    Upper: 'upper' as NormalizeFunctionsEnum,
-    Lower: 'lower' as NormalizeFunctionsEnum,
-  };
+    Upper: 'upper',
+    Lower: 'lower',
+  } as const;
+  export type NormalizeFunctionsEnum =
+    (typeof NormalizeFunctionsEnum)[keyof typeof NormalizeFunctionsEnum];
 }

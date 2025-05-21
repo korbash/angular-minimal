@@ -7,10 +7,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ValidationErrorLocInner } from './validation-error-loc-inner';
+import { Column } from './column';
 
-export interface ValidationError {
-  loc: ValidationErrorLocInner[];
-  msg: string;
-  type: string;
+export interface TableApi {
+  name: string;
+  comment?: string;
+  columns: Record<string, Column>;
+  properties?: Record<string, string[]>;
 }
